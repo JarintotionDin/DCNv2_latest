@@ -72,12 +72,12 @@ def check_gradient_dconv():
     input.requires_grad = True
 
     offset = torch.randn(N, deformable_groups * 2 * kW * kH, inH, inW) * 2
-    # offset.data.zero_()
-    # offset.data -= 0.5
+    # offset.local_data.zero_()
+    # offset.local_data -= 0.5
     offset.requires_grad = True
 
     mask = torch.rand(N, deformable_groups * 1 * kW * kH, inH, inW)
-    # mask.data.zero_()
+    # mask.local_data.zero_()
     mask.requires_grad = True
     mask = torch.sigmoid(mask)
 
